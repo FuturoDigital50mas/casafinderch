@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casafinder | Centro inmobiliario</title>
+<style>
+:root{--green:#123b35;--mint:#dff3e8;--lime:#b9ed72;--ink:#17231f;--muted:#65746d;--bg:#f4f7f4;--line:#e1e9e3;--white:#fff;--gold:#f4bd57}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:11px 15px;font-weight:650}
+.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.sidebar{background:var(--green);color:white;padding:26px 17px;display:flex;flex-direction:column;gap:24px}
+.brand{font-size:26px;font-weight:850;letter-spacing:-1px}.brand span{color:var(--lime)}.tag{font-size:11px;color:#b9d0c5;letter-spacing:1.5px;text-transform:uppercase}
+.nav{display:grid;gap:7px}.nav button{background:transparent;color:#dce9e2;text-align:left;display:flex;gap:12px;align-items:center}.nav button.active,.nav button:hover{background:#28574d;color:white}.nav .ico{width:22px;text-align:center;font-size:18px}
+.sidebar .bottom{margin-top:auto;color:#b9d0c5;font-size:12px}.profile{display:flex;gap:10px;align-items:center;padding:13px;background:#204b41;border-radius:14px}.avatar{width:38px;height:38px;border-radius:50%;background:var(--lime);color:var(--green);display:grid;place-items:center;font-weight:800}
+main{padding:28px clamp(18px,3vw,44px);max-width:1500px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:24px}.eyebrow{color:var(--muted);font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase}h1{font-size:clamp(26px,3vw,36px);letter-spacing:-1.3px;margin:4px 0 6px}h2{font-size:21px;margin:0 0 14px;letter-spacing:-.4px}h3{font-size:16px;margin:0 0 9px}.sub{color:var(--muted);margin:0}.btn-primary{background:var(--green);color:white}.btn-light{background:var(--mint);color:var(--green)}.btn-outline{background:white;border:1px solid var(--line);color:var(--ink)}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin:20px 0}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 3px 12px #143d2610}.stat-label{font-size:13px;color:var(--muted)}.stat-value{font-size:28px;font-weight:800;letter-spacing:-1px;margin:7px 0}.stat-note{font-size:12px;color:#4c7d5d}.two{grid-template-columns:1.25fr .75fr}.three{grid-template-columns:repeat(3,1fr)}.hero{background:linear-gradient(120deg,#123b35,#245e4d);color:white;border-radius:22px;padding:27px;display:flex;justify-content:space-between;gap:20px;align-items:center}.hero p{color:#d0e4d9;max-width:600px}.hero .btn-primary{background:var(--lime);color:var(--green)}.pill{display:inline-block;background:var(--mint);color:var(--green);padding:5px 10px;border-radius:999px;font-size:12px;font-weight:700}.pill.gold{background:#fff0cf;color:#7a5100}.list{display:grid;gap:12px}.item{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.item:last-child{border:0}.item small{display:block;color:var(--muted);margin-top:3px}.bar{height:8px;border-radius:20px;background:#e9efe9;overflow:hidden;margin:9px 0}.bar span{display:block;height:100%;background:#72b88c;border-radius:20px}.section{display:none}.section.active{display:block}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:13px;color:var(--muted);font-weight:650}.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid #d8e2da;border-radius:11px;background:white;color:var(--ink)}.field textarea{min-height:90px;resize:vertical}.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 14px}.result{background:var(--mint);border-radius:14px;padding:17px;margin-top:14px}.result strong{font-size:25px;display:block;color:var(--green)}.checklist{display:grid;gap:10px}.check{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:12px}.check input{margin-top:4px;accent-color:var(--green)}.check small{display:block;color:var(--muted);margin-top:3px}.progress{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin:10px 0}.listing{display:grid;grid-template-columns:130px 1fr;gap:15px;padding:14px 0;border-bottom:1px solid var(--line)}.thumb{border-radius:13px;background:linear-gradient(140deg,#d9e8dc,#8db49a);display:grid;place-items:center;font-size:32px;min-height:105px}.listing strong{display:block}.price{font-size:20px;font-weight:800;margin:5px 0}.muted{color:var(--muted);font-size:13px}.tabbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tabbar button{background:white;border:1px solid var(--line);color:var(--muted)}.tabbar button.active{background:var(--green);color:white}.notice{background:#fff5dd;border:1px solid #f1dda8;color:#6c4b0a;padding:13px 15px;border-radius:12px;font-size:13px;margin:12px 0}.footer-note{font-size:12px;color:var(--muted);margin-top:20px}.mobile-head{display:none}
+@media(max-width:900px){.app{grid-template-columns:1fr}.sidebar{padding:12px;position:sticky;top:0;z-index:5;gap:10px}.brandline{display:flex;justify-content:space-between;align-items:center}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap;padding:9px 12px}.nav button span.label{display:inline}.sidebar .tag,.sidebar .profile,.sidebar .bottom{display:none}.stats{grid-template-columns:repeat(2,1fr)}.two,.three{grid-template-columns:1fr}main{padding:18px}.hero{align-items:flex-start;flex-direction:column}}
+@media(max-width:520px){.nav button{font-size:12px;padding:9px}.stats{gap:9px}.card{padding:15px}.stat-value{font-size:24px}.formgrid{grid-template-columns:1fr}.listing{grid-template-columns:95px 1fr}.top{align-items:flex-start;flex-direction:column}}
+</style></head>
+<body>
+<div class="app">
+<aside class="sidebar">
+ <div class="brandline"><div><div class="brand">casa<span>finder</span></div><div class="tag">Tu centro inmobiliario</div></div></div>
+ <nav class="nav" id="nav">
+  <button class="active" data-page="inicio"><span class="ico">⌂</span><span class="label">Inicio</span></button>
+  <button data-page="inmuebles"><span class="ico">⌂</span><span class="label">Mis inmuebles</span></button>
+  <button data-page="red"><span class="ico">♧</span><span class="label">Red de corredores</span></button>
+  <button data-page="academia"><span class="ico">▣</span><span class="label">Academia</span></button>
+  <button data-page="expediente"><span class="ico">☑</span><span class="label">Documentación</span></button>
+  <button data-page="valoracion"><span class="ico">⌗</span><span class="label">Valuación</span></button>
+  <button data-page="comisiones"><span class="ico">％</span><span class="label">Comisiones</span></button>
+  <button data-page="clientes"><span class="ico">♙</span><span class="label">Clientes y seguimiento</span></button>
+ </nav>
+ <div class="bottom">Prototipo interactivo · Datos de ejemplo<br>Casafinder · México</div>
+ <div class="profile"><div class="avatar">CF</div><div><b>Corredor demo</b><div style="font-size:12px;color:#b9d0c5">Cuenta de prueba</div></div></div>
+</aside>
+<main>
+<header class="top"><div><div class="eyebrow">Panel de trabajo</div><h1 id="pageTitle">Tu negocio inmobiliario, en un solo lugar.</h1><p class="sub" id="pageSub">Aprende, publica, conecta y cierra operaciones con método.</p></div><button class="btn-primary" onclick="go('inmuebles')">＋ Captar inmueble</button></header>
+
+<section class="section active" id="inicio">
+ <div class="hero"><div><span class="pill">Tu siguiente paso</span><h2 style="font-size:26px;margin-top:13px">Convierte cada oportunidad en una operación bien gestionada.</h2><p>Aprende a vender, verifica documentos y colabora con otros corredores desde una misma plataforma.</p><button class="btn-primary" onclick="go('academia')">Continuar capacitación →</button></div><div style="font-size:74px;opacity:.9">⌂</div></div>
+ <div class="grid stats">
+  <div class="card"><div class="stat-label">Inmuebles activos</div><div class="stat-value">8</div><div class="stat-note">3 en colaboración</div></div>
+  <div class="card"><div class="stat-label">Clientes en seguimiento</div><div class="stat-value">14</div><div class="stat-note">4 requieren contacto hoy</div></div>
+  <div class="card"><div class="stat-label">Comisiones potenciales</div><div class="stat-value">$86,400</div><div class="stat-note">Ejemplo ilustrativo · MXN</div></div>
+  <div class="card"><div class="stat-label">Progreso de aprendizaje</div><div class="stat-value">35%</div><div class="bar"><span style="width:35%"></span></div></div>
+ </div>
+ <div class="grid two">
+  <div class="card"><h2>Tu lista de hoy</h2><div class="list">
+   <div class="item"><div><b>Solicitar documentos</b><small>Casa en San Pedro Cholula · Expediente</small></div><span class="pill gold">Pendiente</span></div>
+   <div class="item"><div><b>Contactar prospecto</b><small>Terreno en Cuautlancingo · Seguimiento</small></div><span class="pill">Hoy</span></div>
+   <div class="item"><div><b>Confirmar visita</b><small>Casa en Momoxpan · 17:30 h</small></div><span class="pill">Agendada</span></div>
+  </div><button class="btn-outline" onclick="go('clientes')" style="margin-top:15px">Ver seguimiento</button></div>
+  <div class="card"><h2>Aprende en 10 minutos</h2><div class="pill">Módulo 01 · Fundamentos</div><h3 style="margin-top:13px">Cómo captar un inmueble con seguridad</h3><p class="sub">Aprende qué preguntar al propietario, qué documentos solicitar y cómo acordar las condiciones de comercialización.</p><div class="bar"><span style="width:35%"></span></div><button class="btn-primary" onclick="go('academia')">Abrir lección →</button></div>
+ </div>
+ <p class="footer-note">Los indicadores mostrados son datos ficticios de demostración, no corresponden a operaciones reales.</p>
+</section>
+
+<section class="section" id="inmuebles">
+ <div class="grid two">
+  <div class="card"><h2>Registrar inmueble</h2><p class="sub">Crea una ficha inicial para organizar la captación.</p>
+   <form id="propertyForm"><div class="field"><label>Nombre o referencia</label><input id="pname" required placeholder="Ej. Casa en Momoxpan"></div>
+   <div class="formgrid"><div class="field"><label>Tipo de inmueble</label><select id="ptype"><option>Casa</option><option>Terreno</option><option>Departamento</option><option>Local comercial</option></select></div><div class="field"><label>Situación documental declarada</label><select id="pdoc"><option>Escritura</option><option>Título parcelario</option><option>Dominio pleno en trámite</option><option>Otro / por revisar</option></select></div></div>
+   <div class="formgrid"><div class="field"><label>Precio solicitado (MXN)</label><input id="pprice" type="number" min="0" placeholder="1850000"></div><div class="field"><label>Zona / colonia</label><input id="pzone" placeholder="Colonia, municipio"></div></div>
+   <div class="field"><label>Notas iniciales</label><textarea id="pnotes" placeholder="Superficie, características, condiciones..."></textarea></div>
+   <button class="btn-primary" type="submit">Guardar en esta sesión</button></form>
+  </div>
+  <div class="card"><h2>Mis inmuebles</h2><div id="propertyList">
+   <div class="listing"><div class="thumb">⌂</div><div><span class="pill">Activa</span><strong>Casa en San Pedro Cholula</strong><div class="price">$2,450,000</div><div class="muted">Escritura · 145 m² construcción</div></div></div>
+   <div class="listing"><div class="thumb">▱</div><div><span class="pill gold">En revisión</span><strong>Terreno en Cuautlancingo</strong><div class="price">$980,000</div><div class="muted">Documentación por verificar · 240 m²</div></div></div>
+  </div></div>
+ </div>
+</section>
+
+<section class="section" id="red">
+ <div class="card"><div class="top" style="margin-bottom:12px"><div><h2>Red de corredores Casafinder</h2><p class="sub">Colabora con profesionales y comparte oportunidades mediante acuerdos claros.</p></div><button class="btn-primary" onclick="alert('Demo: el registro de corredor requiere un backend y verificación de identidad.')">＋ Unirme a la red</button></div>
+ <div class="notice">Antes de compartir datos personales o documentos, verifica la identidad del corredor y formaliza por escrito el acuerdo de colaboración, la comisión, su causación y el responsable de cada actividad.</div>
+ <div class="grid three">
+  <div class="card"><span class="pill">Inmueble compartido</span><h3 style="margin-top:12px">Casa en La Carcaña</h3><p class="muted">Corredor captador: Ana R. · Cholula</p><b>$3,200,000 MXN</b><p class="muted">Comisión total pactada: 5% · Por confirmar en contrato</p><button class="btn-light" onclick="alert('Demo: solicita acceso al corredor captador.')">Solicitar colaboración</button></div>
+  <div class="card"><span class="pill">Busca comprador</span><h3 style="margin-top:12px">Terreno en zona industrial</h3><p class="muted">Corredor captador: Luis M. · Cuautlancingo</p><b>$1,450,000 MXN</b><p class="muted">Superficie: 500 m² · Documentación en revisión</p><button class="btn-light" onclick="alert('Demo: solicita acceso al corredor captador.')">Tengo un prospecto</button></div>
+  <div class="card"><span class="pill gold">Oportunidad</span><h3 style="margin-top:12px">Departamento en Momoxpan</h3><p class="muted">Corredora captadora: Carla P.</p><b>$1,890,000 MXN</b><p class="muted">Colaboración disponible sujeta a autorización</p><button class="btn-light" onclick="alert('Demo: solicita acceso al corredor captador.')">Ver condiciones</button></div>
+ </div></div>
+</section>
+
+<section class="section" id="academia">
+ <div class="grid two">
+  <div class="card"><h2>Academia Casafinder</h2><p class="sub">Aprende desde cero con lecciones cortas y actividades prácticas.</p><div class="list" id="lessons">
+   <div class="item"><div><b>01 · El trabajo del corredor inmobiliario</b><small>Roles, límites y proceso de venta · 8 min</small></div><button class="btn-light" onclick="lesson(0)">Abrir</button></div>
+   <div class="item"><div><b>02 · Captación y entrevista al propietario</b><small>Preguntas, autorización y expectativas · 12 min</small></div><button class="btn-light" onclick="lesson(1)">Abrir</button></div>
+   <div class="item"><div><b>03 · Documentos: escritura y derechos parcelarios</b><small>Qué revisar y cuándo escalar · 15 min</small></div><button class="btn-light" onclick="lesson(2)">Abrir</button></div>
+   <div class="item"><div><b>04 · Cómo presentar una propiedad</b><small>Beneficios, evidencia y visitas · 10 min</small></div><button class="btn-light" onclick="lesson(3)">Abrir</button></div>
+   <div class="item"><div><b>05 · Prospectos, objeciones y seguimiento</b><small>Preguntar, escuchar y dar seguimiento · 12 min</small></div><button class="btn-light" onclick="lesson(4)">Abrir</button></div>
+   <div class="item"><div><b>06 · Oferta, negociación y cierre</b><small>Acuerdos, condiciones y formalización · 15 min</small></div><button class="btn-light" onclick="lesson(5)">Abrir</button></div>
+  </div></div>
+  <div class="card" id="lessonPanel"><div class="pill">Lección interactiva</div><h2 style="margin-top:13px">Bienvenido a la Academia</h2><p class="sub">Selecciona una lección para ver sus objetivos y una actividad práctica.</p><div class="notice">La capacitación no sustituye asesoría jurídica, fiscal, notarial ni valuatoria.</div></div>
+ </div>
+</section>
+
+<section class="section" id="expediente">
+ <div class="grid two">
+  <div class="card"><h2>Checklist documental</h2><p class="sub">Lista orientativa. Los requisitos cambian según régimen, entidad y operación.</p>
+   <div class="field"><label>Tipo de operación</label><select id="docType" onchange="renderChecklist()"><option value="escritura">Inmueble con escritura</option><option value="parcelario">Derechos parcelarios / título parcelario</option><option value="pleno">Parcela con dominio pleno</option></select></div>
+   <div class="progress"><span id="checkCount">0 de 0 completados</span><span id="checkPct">0%</span></div><div class="bar"><span id="checkBar" style="width:0%"></span></div>
+   <div class="checklist" id="checklist"></div>
+  </div>
+  <div class="card"><h2>Ruta de formalización</h2><p class="sub">Selecciona el escenario para consultar una ruta general de trabajo.</p>
+   <div class="field"><label>Forma de pago / operación</label><select id="routeType" onchange="renderRoute()"><option value="cash">Recursos propios (contado)</option><option value="bank">Crédito hipotecario bancario</option><option value="infonavit">Crédito Infonavit</option><option value="parcel">Derechos parcelarios</option></select></div>
+   <div id="routeBox" class="list"></div>
+   <div class="notice">La intervención de notaría, fedatario, Registro Público, RAN, banco o Infonavit depende del tipo de inmueble, régimen jurídico y requisitos aplicables. Confirma la ruta con profesionales y autoridades competentes.</div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="valoracion">
+ <div class="grid two">
+  <div class="card"><h2>Estimador de valor comercial</h2><p class="sub">Calcula un escenario con los valores comparables que tú ingreses. No consulta bases de mercado automáticamente.</p>
+   <div class="formgrid"><div class="field"><label>Superficie de terreno (m²)</label><input id="land" type="number" min="0" value="160"></div><div class="field"><label>Precio comparable de terreno ($/m²)</label><input id="landRate" type="number" min="0" value="6500"></div>
+   <div class="field"><label>Construcción (m²)</label><input id="built" type="number" min="0" value="120"></div><div class="field"><label>Precio comparable construcción ($/m²)</label><input id="builtRate" type="number" min="0" value="9500"></div>
+   <div class="field"><label>Ajuste estimado (%)</label><input id="adjust" type="number" min="-100" max="100" value="0"></div><div class="field"><label>Precio de publicación deseado (MXN)</label><input id="ask" type="number" min="0" value="1850000"></div></div>
+   <button class="btn-primary" onclick="calculateValuation()">Calcular escenario</button>
+   <div class="result" id="valuationResult"><span class="muted">Valor indicativo estimado</span><strong>$2,180,000</strong><span class="muted">Introduce comparables reales y pulsa calcular.</span></div>
+  </div>
+  <div class="card"><h2>Ficha de análisis comercial</h2><div class="field"><label>Zona / colonia</label><input id="vzone" placeholder="Ej. San Pedro Cholula"></div>
+   <div class="field"><label>Estado físico y características</label><textarea id="vfeatures" placeholder="Conservación, servicios, accesos, uso de suelo..."></textarea></div>
+   <div class="field"><label>Comparables consultados y fecha</label><textarea id="vcomps" placeholder="Dirección aproximada, precio, superficie, fuente y fecha..."></textarea></div>
+   <button class="btn-outline" onclick="makeSummary()">Generar resumen de valoración</button><div id="vsummary" class="result" style="display:none"></div>
+   <div class="notice">El resultado no es un avalúo profesional. El precio por m² debe derivarse de comparables verificables, con ajustes por ubicación, condición, uso y características. El ROI requiere costos, ingresos y horizonte definidos.</div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="comisiones">
+ <div class="grid two">
+  <div class="card"><h2>Calculadora de comisiones</h2><p class="sub">Simula el reparto entre Casafinder y los corredores colaboradores.</p>
+   <div class="field"><label>Precio de cierre (MXN)</label><input id="salePrice" type="number" value="2000000" min="0"></div>
+   <div class="formgrid"><div class="field"><label>Comisión total (%)</label><input id="fee" type="number" value="5" min="0" max="100" step=".1"></div><div class="field"><label>Participación Casafinder (%)</label><input id="platformShare" type="number" value="15" min="0" max="100" step=".5"></div>
+   <div class="field"><label>Corredor captador (%) del remanente</label><input id="sellerShare" type="number" value="50" min="0" max="100" step=".5"></div><div class="field"><label>Corredor comprador (%) del remanente</label><input id="buyerShare" type="number" value="50" min="0" max="100" step=".5"></div></div>
+   <button class="btn-primary" onclick="calculateCommission()">Calcular reparto</button><div class="result" id="commissionResult"><span class="muted">Comisión total estimada</span><strong>$100,000</strong></div>
+  </div>
+  <div class="card"><h2>Reglas de colaboración</h2><div class="list">
+   <div class="item"><div><b>1. Inmueble autorizado</b><small>El captador acredita autorización para comercializarlo.</small></div></div>
+   <div class="item"><div><b>2. Acuerdo previo</b><small>Se documenta el porcentaje, base, momento de pago y responsabilidades.</small></div></div>
+   <div class="item"><div><b>3. Prospecto registrado</b><small>Se registra quién presentó al comprador y cuándo.</small></div></div>
+   <div class="item"><div><b>4. Cierre y comprobación</b><small>Se confirma la operación y se calculan los importes conforme al acuerdo.</small></div></div>
+  </div><div class="notice">Los porcentajes son editables y solo ilustrativos. No representan una política comercial aprobada de Casafinder.</div></div>
+ </div>
+</section>
+
+<section class="section" id="clientes">
+ <div class="grid two">
+  <div class="card"><h2>Registrar prospecto</h2><form id="leadForm"><div class="field"><label>Nombre o referencia</label><input id="leadName" required placeholder="Nombre del prospecto"></div>
+   <div class="formgrid"><div class="field"><label>Interés</label><select id="leadInterest"><option>Compra</option><option>Venta</option><option>Renta</option><option>Inversión</option></select></div><div class="field"><label>Etapa</label><select id="leadStage"><option>Nuevo</option><option>Contactado</option><option>Calificado</option><option>Visita agendada</option><option>Oferta</option><option>Cerrado</option></select></div></div>
+   <div class="field"><label>Próxima acción</label><input id="leadNext" placeholder="Ej. Llamar el jueves"></div><button class="btn-primary">Guardar prospecto</button></form></div>
+  <div class="card"><h2>Embudo de seguimiento</h2><div id="leadList"><div class="item"><div><b>Prospecto ejemplo A</b><small>Compra · Calificado · Visita por confirmar</small></div><span class="pill">Activo</span></div></div></div>
+ </div>
+ <div class="card" style="margin-top:16px"><h2>Guion de primer contacto</h2><p>“Hola, [nombre]. Soy [tu nombre], de Casafinder. Vi que te interesa [tipo de inmueble]. Para no hacerte perder tiempo, ¿me cuentas qué necesitas, en qué zona buscas y qué rango de presupuesto tienes? Con eso puedo compartirte opciones que se ajusten a lo que buscas.”</p><button class="btn-light" onclick="copyScript()">Copiar guion</button><span id="copyMsg" class="muted" style="margin-left:10px"></span></div>
+</section>
+</main></div>
+<script>
+const titles={inicio:["Tu negocio inmobiliario, en un solo lugar.","Aprende, publica, conecta y cierra operaciones con método."],inmuebles:["Tus inmuebles","Organiza propiedades captadas y su información inicial."],red:["Colabora con otros corredores","Comparte oportunidades con acuerdos transparentes."],academia:["Aprende a vender inmuebles","Capacitación práctica desde cero."],expediente:["Documentación y formalización","Controla requisitos y detecta cuándo necesitas asesoría especializada."],valoracion:["Conoce el escenario de valor","Calcula con comparables que puedas verificar."],comisiones:["Reparte comisiones con claridad","Simula acuerdos entre plataforma y corredores."],clientes:["Clientes y seguimiento","Registra prospectos y define la próxima acción."]};
+function go(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));document.getElementById('pageTitle').textContent=titles[id][0];document.getElementById('pageSub').textContent=titles[id][1];window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
+document.getElementById('propertyForm').addEventListener('submit',e=>{e.preventDefault();let n=esc(document.getElementById('pname').value),t=esc(document.getElementById('ptype').value),d=esc(document.getElementById('pdoc').value),p=Number(document.getElementById('pprice').value)||0,z=esc(document.getElementById('pzone').value);let el=document.createElement('div');el.className='listing';el.innerHTML=`<div class="thumb">⌂</div><div><span class="pill gold">Borrador</span><strong>${n}</strong><div class="price">${money(p)}</div><div class="muted">${t} · ${d} · ${z}</div></div>`;document.getElementById('propertyList').prepend(el);e.target.reset();alert('Inmueble agregado a esta sesión de demostración.')});
+const lessons=[
+["El trabajo del corredor inmobiliario",["Entender el papel del intermediario y los límites de su función.","Distinguir información comercial de asesoría legal, fiscal o valuatoria.","Trabajar con autorización y acuerdos claros."],"Actividad: explica en dos frases qué servicio ofreces y qué asuntos canalizarías a un especialista."],
+["Captación y entrevista al propietario",["Confirmar identidad y facultades del propietario.","Preguntar precio esperado, urgencia real, documentación y condiciones.","Acordar por escrito alcance, vigencia, comisión y autorización de promoción."],"Actividad: prepara cinco preguntas para una primera entrevista y una lista de documentos por solicitar."],
+["Documentos: escritura y derechos parcelarios",["Identificar el régimen jurídico del inmueble antes de ofrecerlo.","Distinguir escritura inscrita, título parcelario y dominio pleno.","Detener la promoción si existen dudas relevantes y canalizar a notario o especialista agrario."],"Actividad: clasifica el documento declarado y escribe qué verificación falta. No concluyas que un documento acredita propiedad por su nombre solamente."],
+["Cómo presentar una propiedad",["Describir características verificables y beneficios concretos.","Mostrar fotos reales, ubicación y condiciones relevantes.","Evitar promesas no demostradas sobre plusvalía, servicios o uso de suelo."],"Actividad: redacta un anuncio claro con ubicación, superficie, situación documental y precio."],
+["Prospectos, objeciones y seguimiento",["Escuchar necesidades y presupuesto.","Preguntar qué impide avanzar y responder con información comprobable.","Acordar una siguiente acción y registrar fecha."],"Actividad: practica la respuesta a “lo voy a pensar”: pregunta qué información ayudaría a decidir, sin presionar."],
+["Oferta, negociación y cierre",["Registrar por escrito precio, forma de pago, plazos y condiciones.","Verificar capacidad y ruta de financiamiento sin prometer aprobación.","Coordinar revisión documental, contrato y formalización con profesionales competentes."],"Actividad: arma un checklist de cierre con responsables y fechas."]
+];
+function lesson(i){let l=lessons[i];document.getElementById('lessonPanel').innerHTML=`<div class="pill">Lección ${String(i+1).padStart(2,'0')}</div><h2 style="margin-top:13px">${l[0]}</h2><h3>Al terminar podrás:</h3><ul>${l[1].map(x=>`<li style="margin:8px 0">${x}</li>`).join('')}</ul><div class="result"><b>Práctica</b><p>${l[2]}</p></div><button class="btn-primary" onclick="this.textContent='Lección marcada como revisada';this.disabled=true">Marcar como revisada</button>`}
+const checks={
+escritura:["Identificación oficial del propietario y cotitulares, si los hay","Escritura o título inscrito y datos registrales","Certificado o consulta de situación registral y gravámenes, según proceda","Predial y servicios: comprobantes y situación de adeudos","Datos catastrales, superficie, medidas y colindancias","Régimen matrimonial, copropiedad, sucesión o poderes, si aplica","Uso de suelo, permisos y situación de construcción, cuando corresponda","Autorización de comercialización y condiciones de comisión","Revisión de notaría sobre requisitos, impuestos y formalización"],
+parcelario:["Certificado de derechos parcelarios y titularidad ante RAN","Identificación y calidad agraria de las partes","Confirmar régimen ejidal/comunal y núcleo agrario","Verificar si existe autorización de dominio pleno y su inscripción","Revisar derechos de preferencia/tanto y notificaciones aplicables","Consultar al RAN y especialista en derecho agrario sobre el tipo de transmisión permitida","No anunciar como propiedad privada ni prometer escritura sin acreditación","Contrato y formalidades aplicables, con asesoría especializada"],
+pleno:["Título de propiedad derivado de dominio pleno","Constancia de baja del régimen agrario y registro correspondiente","Inscripción en Registro Público de la Propiedad","Antecedentes registrales, titularidad y gravámenes","Verificar derechos de preferencia/tanto si es primera enajenación","Identidad, capacidad y facultades de quienes venden","Situación fiscal, catastral y de servicios","Revisión de notaría y requisitos locales para formalizar"]
+};
+function renderChecklist(){let key=document.getElementById('docType').value;let box=document.getElementById('checklist');box.innerHTML=checks[key].map((x,i)=>`<label class="check"><input type="checkbox" onchange="updateChecks()"><span>${x}<small>Marca cuando esté verificado; “solicitado” no equivale a “validado”.</small></span></label>`).join('');updateChecks()}
+function updateChecks(){let a=[...document.querySelectorAll('#checklist input')],n=a.filter(x=>x.checked).length,p=a.length?Math.round(n/a.length*100):0;document.getElementById('checkCount').textContent=`${n} de ${a.length} completados`;document.getElementById('checkPct').textContent=p+'%';document.getElementById('checkBar').style.width=p+'%'}
+const routes={
+cash:["Confirmar identidad, titularidad y situación registral.","Acordar por escrito precio, condiciones y calendario, sujeto a revisión profesional.","Notaría revisa antecedentes, calcula conceptos aplicables y prepara instrumento cuando corresponda.","Formalizar pago seguro, firma y entrega conforme al instrumento.","Inscribir la transmisión en el registro que corresponda y conservar comprobantes."],
+bank:["Precalificación y aprobación del crédito por el banco; no asumir que la autorización está garantizada.","Integrar expediente del comprador y del inmueble según requerimientos bancarios.","Avalúo y revisión jurídica/técnica solicitados por la institución.","Coordinar notaría, condiciones de crédito, aportación y fecha de firma.","Formalización, dispersión del crédito e inscripción según instrucciones del banco y notaría."],
+infonavit:["El comprador verifica elegibilidad, monto y condiciones vigentes en Infonavit.","Confirmar que el inmueble y la operación cumplen requisitos del producto de crédito aplicable.","Integrar documentación de comprador, vendedor e inmueble según checklist oficial vigente.","Coordinar avalúo, dictamen, notaría y trámites de la operación.","Firma, pago y registro conforme al proceso oficial y a la notaría asignada."],
+parcel:["Detener cualquier promesa de compraventa de propiedad privada hasta identificar el régimen exacto.","Verificar certificado, titularidad, derechos y situación en el RAN y el núcleo agrario.","Determinar si se trata de cesión de derechos parcelarios o parcela con dominio pleno.","Consultar formalidades, derecho de preferencia y personas con derecho aplicable.","Formalizar e inscribir únicamente por la vía legal correspondiente, con asesoría agraria."]
+};
+function renderRoute(){let r=routes[document.getElementById('routeType').value];document.getElementById('routeBox').innerHTML=r.map((x,i)=>`<div class="item"><div><b>Paso ${i+1}</b><small>${x}</small></div></div>`).join('')}
+function calculateValuation(){let l=+document.getElementById('land').value||0,lr=+document.getElementById('landRate').value||0,b=+document.getElementById('built').value||0,br=+document.getElementById('builtRate').value||0,a=+document.getElementById('adjust').value||0,ask=+document.getElementById('ask').value||0,base=(l*lr+b*br),val=base*(1+a/100);document.getElementById('valuationResult').innerHTML=`<span class="muted">Escenario indicativo (no avalúo)</span><strong>${money(val)}</strong><span class="muted">Terreno: ${money(l*lr)} · Construcción: ${money(b*br)} · Precio solicitado: ${money(ask)}<br>Diferencia estimada frente al solicitado: ${money(val-ask)}</span>`}
+function makeSummary(){let z=esc(document.getElementById('vzone').value||'Sin zona indicada'),f=esc(document.getElementById('vfeatures').value||'Sin características'),c=esc(document.getElementById('vcomps').value||'Sin comparables');let box=document.getElementById('vsummary');box.style.display='block';box.innerHTML=`<b>Resumen de trabajo</b><p><b>Zona:</b> ${z}</p><p><b>Características:</b> ${f}</p><p><b>Comparables:</b> ${c}</p><small>Resumen creado con datos ingresados por el usuario; no constituye un avalúo ni una verificación de mercado.</small>`}
+function calculateCommission(){let price=+document.getElementById('salePrice').value||0,fee=+document.getElementById('fee').value||0,plat=+document.getElementById('platformShare').value||0,s=+document.getElementById('sellerShare').value||0,b=+document.getElementById('buyerShare').value||0;if(plat>100||s+b>100||fee>100||plat<0||s<0||b<0){alert('Revisa los porcentajes: plataforma máximo 100%; captador + comprador máximo 100%.');return}let total=price*fee/100,pc=total*plat/100,rem=total-pc,sc=rem*s/100,bc=rem*b/100,un=rem-sc-bc;document.getElementById('commissionResult').innerHTML=`<span class="muted">Comisión total (${fee}%)</span><strong>${money(total)}</strong><div class="item"><span>Casafinder (${plat}%)</span><b>${money(pc)}</b></div><div class="item"><span>Corredor captador</span><b>${money(sc)}</b></div><div class="item"><span>Corredor comprador</span><b>${money(bc)}</b></div><div class="item"><span>Remanente sin asignar</span><b>${money(un)}</b></div><small class="muted">Cálculo demostrativo sobre comisión bruta, antes de impuestos, gastos o ajustes contractuales.</small>`}
+document.getElementById('leadForm').addEventListener('submit',e=>{e.preventDefault();let n=esc(document.getElementById('leadName').value),i=esc(document.getElementById('leadInterest').value),s=esc(document.getElementById('leadStage').value),nx=esc(document.getElementById('leadNext').value);let d=document.createElement('div');d.className='item';d.innerHTML=`<div><b>${n}</b><small>${i} · ${s} · ${nx||'Sin próxima acción'}</small></div><span class="pill">Nuevo</span>`;document.getElementById('leadList').prepend(d);e.target.reset()});
+function copyScript(){let t='Hola, [nombre]. Soy [tu nombre], de Casafinder. Vi que te interesa [tipo de inmueble]. Para no hacerte perder tiempo, ¿me cuentas qué necesitas, en qué zona buscas y qué rango de presupuesto tienes? Con eso puedo compartirte opciones que se ajusten a lo que buscas.';if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>document.getElementById('copyMsg').textContent='Copiado.').catch(()=>document.getElementById('copyMsg').textContent=t)}else document.getElementById('copyMsg').textContent=t}
+function money(n){return new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0}).format(n)}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+renderChecklist();renderRoute();calculateValuation();calculateCommission();
+</script></body></html>
